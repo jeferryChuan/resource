@@ -1,0 +1,5 @@
+1.以管理员身份打开cmd（在c盘中选中cmd文件，右键选择以管理员身份打开），然后执行如下命令安装chocolatey：
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+2.接着上面的操作，通过命令行安装vcredist2010
+choco install -y vcredist2010
