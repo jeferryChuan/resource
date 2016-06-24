@@ -1,0 +1,63 @@
+cat /dev/ppp
+cat /dev/net/tun2
+
+如果显示结果是:
+cat: /dev/ppp: No such device or address
+cat: /dev/net/tun: File descriptor in bad state
+那么表示已经启用了。如果没启用，让你的服务提供商给你开吧。
+
+安装ppp, iptables
+yum install ppp iptables
+
+添加pptpd的源并安装:
+rpm -i http://poptop.sourceforge.net/yum/stable/rhel6/pptp-release-current.noarch.rpm
+yum install pptpd
+
+
+修改各种配置文件:
+/etc/pptpd.conf
+添加下面两行:
+localip 192.168.0.1
+remoteip 192.168.0.10-111
+192.168.0.10-111表示用户被分配的ip地址的范围。
+
+/etc/ppp/options.pptpd
+添加下面两行，表示使用Google的DNS服务器:
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+
+/etc/ppp/chap-secrets
+这个文件是用来添加vpn账号的，每一行表示一个用户，格式如下:
+username pptpd passwd *
+username表示用户名
+passwd表示账号
+*表示任何ip
+
+/etc/sysctl.conf
+修改内核设置，使得支持转发，将net.ipv4.ip_forward=0改为net.ipv4.ip_forward=1，要取消注释。修改后运行下面命令使得生效:
+/sbin/sysctl -p
+这一步操作的时候可能会有"net.bridge.bridge-nf-call-ip6tables" is an unknown key这样的错误产生，如果没有请继续后面的步骤，
+如果有这样的错误，按照下面的方法解决：
+rm -f /sbin/modprobe 
+ln -s /bin/true /sbin/modprobe
+rm -f /sbin/sysctl 
+ln -s /bin/true /sbin/sysctl
+
+添加转发规则
+上面配置完了，重启pptpd服务后，应该是能登陆，但是没法上网，这时候需要添加iptables转发规则:
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source server-ip
+192.168.0.0/24: 这个是需要包括你上面分配的ip地址范围
+vps-ip: 这里填的是你的服务器ip
+保存iptables转发规则:
+/etc/init.d/iptables save
+然后重启iptables以及pptpd:
+/etc/init.d/iptables restart
+/etc/init.d/pptpd restart
+
+设置开机启动
+把iptables以及pptpd都设置为开机启动:
+chkconfig iptables on
+chkconfig pptpd on
+
+
+参考链接：http://blog.cvmarcher.com/posts/2015/05/27/set-up-vpn-in-centos-6-5/
