@@ -1,0 +1,8 @@
+修改/etc/mysql/my.cnf
+bind-address 0.0.0.0
+
+//修改表
+use mysql  
+update user set host= '%' where user = 'root'; --此时如果提示报错，不用管，继续往下走  
+select host, user from user;  
+flush privileges;  -- * 这一句是刷新刚才的内容  *一定要刷新，因为操作的是系统授权表。。  
