@@ -1,0 +1,6 @@
+sudo apt-get install crontab
+
+crontab -l //显示当前用户所有的定时任务
+
+crontab -e //编辑当前用户的定时任务
+
