@@ -9,3 +9,6 @@ https://github.com/square/PonyDebugger
 
 4.一种十分灵活易变的适用于创建有多种cell的UITableView的方法，不需要使用switch...case，在调整不同种cell的顺序、及增删某种cell时极其方便
 https://github.com/JC-Hu/JHCellConfig
+
+5.在终端就可以使用的翻译工具
+https://github.com/afc163/fanyi
