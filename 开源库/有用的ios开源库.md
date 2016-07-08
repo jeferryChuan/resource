@@ -15,3 +15,6 @@ https://github.com/afc163/fanyi
 
 6.按顺序执行shell命令
 https://github.com/afc163/exeq
+
+7.在windows上使用unix命令，相当于轻量级的Cygwin
+https://github.com/bmatzelle/gow
