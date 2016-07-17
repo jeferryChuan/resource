@@ -23,7 +23,7 @@ sudo apt-get install mysql-server
 sudo apt-get install git
 
 //修改php配置文件
-sudo vim /etc/php5/fpm/php.ini cgi.fix_pathinfo=0
+sudo vim /etc/php5/fpm/php.ini cgi.fix_pathinfo=0 //700~800
 
 //使用 php5enmod 启用 MCrypt 扩展
 sudo php5enmod mcrypt
