@@ -25,5 +25,8 @@ https://github.com/bang590/JSPatch
 9.A XCode plugin that provides autocompletion for JSPatch
 https://github.com/bang590/JSPatchX
 
+10.A simple and flexible class for presenting custom views as a popup in iOS.
+https://github.com/jmascia/KLCPopup
+
 
 
