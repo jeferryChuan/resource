@@ -12,3 +12,7 @@ https://github.com/octobercms/october
 
 5.ThinkPHP3.2 ——基于PHP5的简单快速的面向对象的PHP框架
 https://github.com/top-think/thinkphp
+
+6.Minify css and js files in CodeIgniter
+https://github.com/ericbarnes/ci-minify
+
