@@ -5,6 +5,8 @@ apt-get install python-pip
 pip install shadowsocks
 ---
 etc/shadowsocks.json
+
+
 {
     "server":"my_server_ip",
     "server_port":8388,
@@ -19,4 +21,6 @@ etc/shadowsocks.json
 
 
 /etc/rc.d/rc.local
+
+
 ssserver -c /etc/shadowsocks.json -d start
