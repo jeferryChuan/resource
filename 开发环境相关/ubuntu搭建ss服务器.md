@@ -1,7 +1,9 @@
 apt-get update
+---
 apt-get install python-pip
+---
 pip install shadowsocks
-
+---
 etc/shadowsocks.json
 {
     "server":"my_server_ip",
@@ -13,7 +15,7 @@ etc/shadowsocks.json
     "method":"aes-256-cfb",
     "fast_open": false
 }
-
+---
 
 
 /etc/rc.d/rc.local
