@@ -1,9 +1,15 @@
 apt-get update
----
+
+
+
 apt-get install python-pip
----
+
+
+
 pip install shadowsocks
----
+
+
+
 etc/shadowsocks.json
 
 
@@ -17,7 +23,7 @@ etc/shadowsocks.json
     "method":"aes-256-cfb",
     "fast_open": false
 }
----
+
 
 
 /etc/rc.d/rc.local
