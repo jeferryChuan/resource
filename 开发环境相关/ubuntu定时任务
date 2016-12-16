@@ -5,10 +5,11 @@ crontab -l //显示当前用户所有的定时任务
 crontab -e //编辑当前用户的定时任务
 
 //语法
-* * * * * command to be executed
-- - - - - -
-| | | | | |
-| | | | | --- 预执行的命令
+* * * * * user command to be executed
+- - - - - - -
+| | | | | | | 
+| | | | | | --- 预执行的命令
+| | | | | --- 命令执行者，如root
 | | | | ----- 表示星期0～7（其中星期天可以用0或7表示）
 | | | ------- 表示月份1～12
 | | --------- 表示日期1～31
@@ -17,6 +18,6 @@ crontab -e //编辑当前用户的定时任务
 
 
 //实例，每天3点定时重启
-# m h  dom mon dow   command
+# m h  dom mon dow user  command
 
-00 03 * * * reboot
+00 03 * * * root reboot
