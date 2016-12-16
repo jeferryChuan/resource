@@ -1,17 +1,10 @@
 apt-get update
 
-
-
 apt-get install python-pip
-
-
 
 pip install shadowsocks
 
-
-
 etc/shadowsocks.json
-
 
 {
     "server":"my_server_ip",
@@ -25,8 +18,28 @@ etc/shadowsocks.json
 }
 
 
+apt-get install syatemd
 
-/etc/rc.d/rc.local
+cd /etc/systemd/system
 
+vim shadowsocks.service
+```
+[Unit]
+Description=Shadowsocks
+After=network.target
 
-ssserver -c /etc/shadowsocks.json -d start
+[Service]
+Type=forking
+PIDFile=/run/shadowsocks/server.pid
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /run/shadowsocks
+ExecStartPre=/bin/chown root:root /run/shadowsocks
+ExecStart=/usr/local/bin/ssserver --pid-file /var/run/shadowsocks/server.pid -c /etc/shadowsocks.json -d start
+Restart=on-abort
+User=root
+Group=root
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
+```
