@@ -18,7 +18,7 @@ etc/shadowsocks.json
 }
 
 
-apt-get install syatemd
+apt-get install systemd
 
 cd /etc/systemd/system
 
