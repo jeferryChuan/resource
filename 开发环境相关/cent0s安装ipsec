@@ -1,0 +1,4 @@
+wget https://raw.githubusercontent.com/quericy/one-key-ikev2-vpn/master/one-key-ikev2.sh
+chmod +x one-key-ikev2.sh
+bash one-key-ikev2.sh
+（vps类型选2，其他不填，一路回车到底）
